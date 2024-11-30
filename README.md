@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BlockMonials
 
-## Getting Started
+BlockMonials is a blockchain-based testimonial service where sellers can enlist their products and receive blockchain-verified testimonials from users. Sellers can embed these testimonials into their websites to showcase authentic feedback and build trust.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### For Sellers:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Enlist products with details like name, description, and image.
+- Generate an HTML embed code to display testimonials on external websites.
+- View all testimonials submitted for their products in a seller dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### For Users:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Connect wallet to authenticate via blockchain.
+- View all enlisted products.
+- Submit testimonials for products, including a star rating and feedback text.
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Blockchain Interaction**: Ethers.js
+- **Wallet Integration**: MetaMask, WalletConnect
+- **Styling**: Tailwind CSS
+- **Package Manager**: Yarn
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation and Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
 
-## Deploy on Vercel
+1. Node.js and Yarn installed on your system.
+2. A blockchain wallet (e.g., MetaMask).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Setting up the project
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/Stanish4Ever/BlockMonials.git
+   cd blockmonials
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+    yarn install
+   ```
+
+3. **Blockchain Wallet**
+
+   - Install MetaMask or any other wallet of your choice.
+   - Get some test ETH from [Sepolia Faucet](https://sepoliafaucet.com/).
+
+4. Run the Development Server
+   ```bash
+   yarn dev
+   ```
+
+## For Developers
+
+### Forking the Repository
+
+1. Fork the repository to your GitHub account.
+2. Clone the forked repository to your local machine.
+3. Create a new branch for your changes.
+   ```bash
+   git checkout -b fe
+   ```
+4. Make your changes and commit them with descriptive messages.
+   ```bash
+   git commit -m "Added new feature"
+   ```
+5. Push your changes to your forked repository.
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. Create a pull request to the original repository.
+
+## Thank You!
+
+This markdown guide includes installation, setup, developer forking and building instructions, contribution guidelines, and directory structure. You can replace placeholders like `your-username` with the actual values.
