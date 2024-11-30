@@ -3,12 +3,13 @@
 import { useState } from 'react'
 import { useWallet } from '../components/WalletProvider'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+// import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { useToast } from '@/hooks/use-toast'
 import { StarRating } from '../components/StarRating'
+import Image from 'next/image'
 
 // Mock data for products
 const mockProducts = [
@@ -69,7 +70,7 @@ export default function ExploreProducts() {
               <CardTitle className="text-primary">{product.name}</CardTitle>
             </CardHeader>
             <CardContent>
-              <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
+              <Image src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
               <p className="text-gray-600">{product.description}</p>
             </CardContent>
             <CardFooter>

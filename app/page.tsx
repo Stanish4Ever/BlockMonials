@@ -79,7 +79,7 @@ export default function Home() {
         <ol className="list-decimal list-inside text-left max-w-2xl mx-auto space-y-2 text-gray-600">
           <li>Sellers list their products and receive a unique embed code.</li>
           <li>Buyers purchase products and leave blockchain-verified reviews.</li>
-          <li>Testimonials are securely stored and displayed on the seller's website.</li>
+          <li>Testimonials are securely stored and displayed on the seller website.</li>
           <li>Future customers can trust the authenticity of the reviews.</li>
         </ol>
       </div>

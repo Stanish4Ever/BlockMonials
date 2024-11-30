@@ -1,59 +1,78 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { useWallet } from '../components/WalletProvider'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
-import { useToast } from '@/hooks/use-toast'
+import { useState } from 'react';
+import { useWallet } from '../components/WalletProvider';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
+
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+}
+
+interface NewProduct {
+  name: string;
+  description: string;
+  image: string;
+}
 
 export default function MyProducts() {
-  const { address } = useWallet()
-  const { toast } = useToast()
-  const [products, setProducts] = useState<any[]>([])
-  const [newProduct, setNewProduct] = useState({
+  const { address } = useWallet();
+  const { toast } = useToast();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [newProduct, setNewProduct] = useState<NewProduct>({
     name: '',
     description: '',
     image: '',
-  })
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setNewProduct({ ...newProduct, [e.target.name]: e.target.value })
-  }
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setNewProduct({
+      ...newProduct,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onload = (event) => {
-        if (event.target) {
-          setNewProduct({ ...newProduct, image: event.target.result as string })
+        if (event.target?.result) {
+          setNewProduct({ ...newProduct, image: event.target.result as string });
         }
-      }
-      reader.readAsDataURL(e.target.files[0])
+      };
+      reader.readAsDataURL(e.target.files[0]);
     }
-  }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const productId = `PROD-${Date.now()}`
-    const product = { ...newProduct, id: productId }
-    setProducts([...products, product])
-    setNewProduct({ name: '', description: '', image: '' })
+    e.preventDefault();
+    const productId = `PROD-${Date.now()}`;
+    const product: Product = { ...newProduct, id: productId };
+    setProducts([...products, product]);
+    setNewProduct({ name: '', description: '', image: '' });
     toast({
-      title: "Product Added",
+      title: 'Product Added',
       description: `${product.name} has been added successfully.`,
-    })
-  }
+    });
+  };
 
   const generateEmbedCode = (productId: string) => {
     return `<div id="blockmonials" data-product-id="${productId}"></div>
-<script src="https://blockmonials.com/embed.js"></script>`
-  }
+<script src="https://blockmonials.vercel.com/embed.js"></script>`;
+  };
 
   if (!address) {
-    return <div className="text-center text-gray-600">Please connect your wallet to view your products.</div>
+    return <div className="text-center text-gray-600">Please connect your wallet to view your products.</div>;
   }
 
   return (
@@ -108,18 +127,25 @@ export default function MyProducts() {
             </CardHeader>
             <CardContent>
               {product.image && (
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-48 object-cover mb-4 rounded-md"
+                />
               )}
               <p className="text-gray-600">{product.description}</p>
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button variant="outline" onClick={() => {
-                navigator.clipboard.writeText(generateEmbedCode(product.id))
-                toast({
-                  title: "Embed Code Copied",
-                  description: "The embed code has been copied to your clipboard.",
-                })
-              }}>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  navigator.clipboard.writeText(generateEmbedCode(product.id));
+                  toast({
+                    title: 'Embed Code Copied',
+                    description: 'The embed code has been copied to your clipboard.',
+                  });
+                }}
+              >
                 Copy Embed Code
               </Button>
               <Button variant="outline">View Testimonials</Button>
@@ -128,6 +154,5 @@ export default function MyProducts() {
         ))}
       </div>
     </div>
-  )
+  );
 }
-
