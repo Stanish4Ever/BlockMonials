@@ -64,7 +64,7 @@ BlockMonials is a blockchain-based testimonial service where sellers can enlist 
 2. Clone the forked repository to your local machine.
 3. Create a new branch for your changes.
    ```bash
-   git checkout -b fe
+   git checkout -b feature/your-feature-name
    ```
 4. Make your changes and commit them with descriptive messages.
    ```bash
