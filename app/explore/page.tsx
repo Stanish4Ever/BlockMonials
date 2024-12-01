@@ -70,7 +70,11 @@ export default function ExploreProducts() {
               <CardTitle className="text-primary">{product.name}</CardTitle>
             </CardHeader>
             <CardContent>
-              <Image src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
+              <Image src={product.image}
+          alt={product.name}
+          layout="responsive"
+          width={400} 
+          height={300} className="w-full h-48 object-cover mb-4 rounded-md" />
               <p className="text-gray-600">{product.description}</p>
             </CardContent>
             <CardFooter>
